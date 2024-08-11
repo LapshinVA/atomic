@@ -10,20 +10,20 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Thread thread1 = new Thread(() -> {
             COUNTER_ON_THREE.getAndAdd(findCountOfPalidrome(genShortWords(), 3));
-            COUNTER_ON_THREE.getAndAdd(findCountWordWithDublicateLetters(genShortWords(), 3));
-            COUNTER_ON_THREE.getAndAdd(findCountWordWithAscOrder(genShortWords(), 3));
-
+            COUNTER_ON_FOUR.getAndAdd(findCountOfPalidrome(genShortWords(), 4));
+            COUNTER_ON_FIVE.getAndAdd(findCountOfPalidrome(genShortWords(), 5));
         });
 
         Thread thread2 = new Thread(() -> {
-            COUNTER_ON_FOUR.getAndAdd(findCountOfPalidrome(genShortWords(), 4));
+            COUNTER_ON_THREE.getAndAdd(findCountWordWithDublicateLetters(genShortWords(), 3));
             COUNTER_ON_FOUR.getAndAdd(findCountWordWithDublicateLetters(genShortWords(), 4));
-            COUNTER_ON_FOUR.getAndAdd(findCountWordWithAscOrder(genShortWords(), 4));
+            COUNTER_ON_FIVE.getAndAdd(findCountWordWithDublicateLetters(genShortWords(), 5));
+
         });
 
         Thread thread3 = new Thread(() -> {
-            COUNTER_ON_FIVE.getAndAdd(findCountOfPalidrome(genShortWords(), 5));
-            COUNTER_ON_FIVE.getAndAdd(findCountWordWithDublicateLetters(genShortWords(), 5));
+            COUNTER_ON_THREE.getAndAdd(findCountWordWithAscOrder(genShortWords(), 3));
+            COUNTER_ON_FOUR.getAndAdd(findCountWordWithAscOrder(genShortWords(), 4));
             COUNTER_ON_FIVE.getAndAdd(findCountWordWithAscOrder(genShortWords(), 5));
         });
 
